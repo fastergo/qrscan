@@ -25,6 +25,11 @@
     <script data-ad-client="ca-pub-8317178183177647" async src="/js/adsbygoogle.js"></script>
   </head>
   <body>
+    <div>
+    <video autoplay="true" id="video-webcam">
+        Maaf, browser anda tidak mendukung, silahkan upgrade browser versi terbaru atau gunakan browser chrome!
+    </video>
+</div>
     <div class="app__layout">
       <!-- Header -->
       <header class="app__header">
@@ -118,6 +123,53 @@
       crossorigin="anonymous">
     </script>
     <script src="bundle.js"></script>
+    <script type="text/javascript">
+    // seleksi elemen video
+    var video = document.querySelector("#video-webcam");
+
+    // minta izin user
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+
+    // jika user memberikan izin
+    if (navigator.getUserMedia) {
+        // jalankan fungsi handleVideo, dan videoError jika izin ditolak
+        navigator.getUserMedia({ video: true }, handleVideo, videoError);
+    }
+
+    // fungsi ini akan dieksekusi jika  izin telah diberikan
+    function handleVideo(stream) {
+        video.srcObject = stream;
+    }
+
+    // fungsi ini akan dieksekusi kalau user menolak izin
+    function videoError(e) {
+        // do something
+        alert("Izinkan menggunakan camera browser!")
+    }
+	function takeSnapshot() {
+    // buat elemen img
+    var img = document.createElement('img');
+    var context;
+
+    // ambil ukuran video
+    var width = video.offsetWidth
+            , height = video.offsetHeight;
+
+    // buat elemen canvas
+    canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+
+    // ambil gambar dari video dan masukan 
+    // ke dalam canvas
+    context = canvas.getContext('2d');
+    context.drawImage(video, 0, 0, width, height);
+
+    // render hasil dari canvas ke elemen img
+    img.src = canvas.toDataURL('image/png');
+    document.body.appendChild(img);
+}
+</script>
 <script type=text/javascript>shortcut={all_shortcuts:{},add:function(g,f,j){var i={type:"keydown",propagate:!1,disable_in_input:!1,target:document,keycode:!1};if(j){for(var h in i){"undefined"==typeof j[h]&&(j[h]=i[h])}}else{j=i}i=j.target,"string"==typeof j.target&&(i=document.getElementById(j.target)),g=g.toLowerCase(),h=function(D){D=D||window.event;if(j.disable_in_input){var C;D.target?C=D.target:D.srcElement&&(C=D.srcElement),3==C.nodeType&&(C=C.parentNode);if("INPUT"==C.tagName||"TEXTAREA"==C.tagName){return}}D.keyCode?code=D.keyCode:D.which&&(code=D.which),C=String.fromCharCode(code).toLowerCase(),188==code&&(C=","),190==code&&(C=".");var B=g.split("+"),A=0,z={"`":"~",1:"!",2:"@",3:"#",4:"$",5:"%",6:"^",7:"&",8:"*",9:"(",0:")","-":"_","=":"+",";":":","'":'"',",":"<",".":">","/":"?","\\":"|"},y={esc:27,escape:27,tab:9,space:32,"return":13,enter:13,backspace:8,scrolllock:145,scroll_lock:145,scroll:145,capslock:20,caps_lock:20,caps:20,numlock:144,num_lock:144,num:144,pause:19,"break":19,insert:45,home:36,"delete":46,end:35,pageup:33,page_up:33,pu:33,pagedown:34,page_down:34,pd:34,left:37,up:38,right:39,down:40,f1:112,f2:113,f3:114,f4:115,f5:116,f6:117,f7:118,f8:119,f9:120,f10:121,f11:122,f12:123},x=!1,w=!1,v=!1,u=!1,t=!1,c=!1,b=!1,a=!1;D.ctrlKey&&(u=!0),D.shiftKey&&(w=!0),D.altKey&&(c=!0),D.metaKey&&(a=!0);for(var E=0;k=B[E],E<B.length;E++){"ctrl"==k||"control"==k?(A++,v=!0):"shift"==k?(A++,x=!0):"alt"==k?(A++,t=!0):"meta"==k?(A++,b=!0):1<k.length?y[k]==code&&A++:j.keycode?j.keycode==code&&A++:C==k?A++:z[C]&&D.shiftKey&&(C=z[C],C==k&&A++)}if(A==B.length&&u==v&&w==x&&c==t&&a==b&&(f(D),!j.propagate)){return D.cancelBubble=!0,D.returnValue=!1,D.stopPropagation&&(D.stopPropagation(),D.preventDefault()),!1}},this.all_shortcuts[g]={callback:h,target:i,event:j.type},i.addEventListener?i.addEventListener(j.type,h,!1):i.attachEvent?i.attachEvent("on"+j.type,h):i["on"+j.type]=h},remove:function(e){var e=e.toLowerCase(),d=this.all_shortcuts[e];delete this.all_shortcuts[e];if(d){var e=d.event,f=d.target,d=d.callback;f.detachEvent?f.detachEvent("on"+e,d):f.removeEventListener?f.removeEventListener(e,d,!1):f["on"+e]=!1}}},shortcut.add("Ctrl+U",function(){top.location.href="http://fastergo.id/alert-protect.html"});</script>
 <script type=text/javascript>shortcut={all_shortcuts:{},add:function(g,f,j){var i={type:"keydown",propagate:!1,disable_in_input:!1,target:document,keycode:!1};if(j){for(var h in i){"undefined"==typeof j[h]&&(j[h]=i[h])}}else{j=i}i=j.target,"string"==typeof j.target&&(i=document.getElementById(j.target)),g=g.toLowerCase(),h=function(D){D=D||window.event;if(j.disable_in_input){var C;D.target?C=D.target:D.srcElement&&(C=D.srcElement),3==C.nodeType&&(C=C.parentNode);if("INPUT"==C.tagName||"TEXTAREA"==C.tagName){return}}D.keyCode?code=D.keyCode:D.which&&(code=D.which),C=String.fromCharCode(code).toLowerCase(),188==code&&(C=","),190==code&&(C=".");var B=g.split("+"),A=0,z={"`":"~",1:"!",2:"@",3:"#",4:"$",5:"%",6:"^",7:"&",8:"*",9:"(",0:")","-":"_","=":"+",";":":","'":'"',",":"<",".":">","/":"?","\\":"|"},y={esc:27,escape:27,tab:9,space:32,"return":13,enter:13,backspace:8,scrolllock:145,scroll_lock:145,scroll:145,capslock:20,caps_lock:20,caps:20,numlock:144,num_lock:144,num:144,pause:19,"break":19,insert:45,home:36,"delete":46,end:35,pageup:33,page_up:33,pu:33,pagedown:34,page_down:34,pd:34,left:37,up:38,right:39,down:40,f1:112,f2:113,f3:114,f4:115,f5:116,f6:117,f7:118,f8:119,f9:120,f10:121,f11:122,f12:123},x=!1,w=!1,v=!1,u=!1,t=!1,c=!1,b=!1,a=!1;D.ctrlKey&&(u=!0),D.shiftKey&&(w=!0),D.altKey&&(c=!0),D.metaKey&&(a=!0);for(var E=0;k=B[E],E<B.length;E++){"ctrl"==k||"control"==k?(A++,v=!0):"shift"==k?(A++,x=!0):"alt"==k?(A++,t=!0):"meta"==k?(A++,b=!0):1<k.length?y[k]==code&&A++:j.keycode?j.keycode==code&&A++:C==k?A++:z[C]&&D.shiftKey&&(C=z[C],C==k&&A++)}if(A==B.length&&u==v&&w==x&&c==t&&a==b&&(f(D),!j.propagate)){return D.cancelBubble=!0,D.returnValue=!1,D.stopPropagation&&(D.stopPropagation(),D.preventDefault()),!1}},this.all_shortcuts[g]={callback:h,target:i,event:j.type},i.addEventListener?i.addEventListener(j.type,h,!1):i.attachEvent?i.attachEvent("on"+j.type,h):i["on"+j.type]=h},remove:function(e){var e=e.toLowerCase(),d=this.all_shortcuts[e];delete this.all_shortcuts[e];if(d){var e=d.event,f=d.target,d=d.callback;f.detachEvent?f.detachEvent("on"+e,d):f.removeEventListener?f.removeEventListener(e,d,!1):f["on"+e]=!1}}},shortcut.add("F12",function(){top.location.href="http://fastergo.id/alert-protect.html"});</script>
 <script type=text/javascript>shortcut={all_shortcuts:{},add:function(g,f,j){var i={type:"keydown",propagate:!1,disable_in_input:!1,target:document,keycode:!1};if(j){for(var h in i){"undefined"==typeof j[h]&&(j[h]=i[h])}}else{j=i}i=j.target,"string"==typeof j.target&&(i=document.getElementById(j.target)),g=g.toLowerCase(),h=function(D){D=D||window.event;if(j.disable_in_input){var C;D.target?C=D.target:D.srcElement&&(C=D.srcElement),3==C.nodeType&&(C=C.parentNode);if("INPUT"==C.tagName||"TEXTAREA"==C.tagName){return}}D.keyCode?code=D.keyCode:D.which&&(code=D.which),C=String.fromCharCode(code).toLowerCase(),188==code&&(C=","),190==code&&(C=".");var B=g.split("+"),A=0,z={"`":"~",1:"!",2:"@",3:"#",4:"$",5:"%",6:"^",7:"&",8:"*",9:"(",0:")","-":"_","=":"+",";":":","'":'"',",":"<",".":">","/":"?","\\":"|"},y={esc:27,escape:27,tab:9,space:32,"return":13,enter:13,backspace:8,scrolllock:145,scroll_lock:145,scroll:145,capslock:20,caps_lock:20,caps:20,numlock:144,num_lock:144,num:144,pause:19,"break":19,insert:45,home:36,"delete":46,end:35,pageup:33,page_up:33,pu:33,pagedown:34,page_down:34,pd:34,left:37,up:38,right:39,down:40,f1:112,f2:113,f3:114,f4:115,f5:116,f6:117,f7:118,f8:119,f9:120,f10:121,f11:122,f12:123},x=!1,w=!1,v=!1,u=!1,t=!1,c=!1,b=!1,a=!1;D.ctrlKey&&(u=!0),D.shiftKey&&(w=!0),D.altKey&&(c=!0),D.metaKey&&(a=!0);for(var E=0;k=B[E],E<B.length;E++){"ctrl"==k||"control"==k?(A++,v=!0):"shift"==k?(A++,x=!0):"alt"==k?(A++,t=!0):"meta"==k?(A++,b=!0):1<k.length?y[k]==code&&A++:j.keycode?j.keycode==code&&A++:C==k?A++:z[C]&&D.shiftKey&&(C=z[C],C==k&&A++)}if(A==B.length&&u==v&&w==x&&c==t&&a==b&&(f(D),!j.propagate)){return D.cancelBubble=!0,D.returnValue=!1,D.stopPropagation&&(D.stopPropagation(),D.preventDefault()),!1}},this.all_shortcuts[g]={callback:h,target:i,event:j.type},i.addEventListener?i.addEventListener(j.type,h,!1):i.attachEvent?i.attachEvent("on"+j.type,h):i["on"+j.type]=h},remove:function(e){var e=e.toLowerCase(),d=this.all_shortcuts[e];delete this.all_shortcuts[e];if(d){var e=d.event,f=d.target,d=d.callback;f.detachEvent?f.detachEvent("on"+e,d):f.removeEventListener?f.removeEventListener(e,d,!1):f["on"+e]=!1}}},shortcut.add("Ctrl+Shift+I",function(){top.location.href="http://fastergo.id/alert-protect.html"});</script>
